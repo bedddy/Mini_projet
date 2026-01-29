@@ -47,7 +47,7 @@ class VueAlert:
             
 
 def main():
-    # Création du compte
+    
     compte = CompteBancaire()
 
     # Création des observateurs
@@ -55,20 +55,20 @@ def main():
     vue_operations = VueOperations()
     vue_alert = VueAlert()
 
-    # Abonnement des observateurs
+   
     compte.ajouter_observateur(vue_solde)
     compte.ajouter_observateur(vue_operations)
     compte.ajouter_observateur(vue_alert)
 
-    # Dépôt normal
+   
     compte.depot(100)
     print()
 
-    # Forcer un solde négatif (besoin du test)
+  
     compte.solde -= 150
     compte.historique.append("Retrait -150")
 
-    # Notification manuelle
+   
     compte.notifier()
 
 

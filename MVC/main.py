@@ -4,37 +4,40 @@ from View.vue_op import VueOperations
 from View.vue_alrt import VueAlert
 from Controller.controller import CompteController
 
-
 if __name__ == "__main__":
-    # -------------------
-    # 1️⃣ Création du modèle
-    # -------------------
-    compte = Compte()
 
-    # -------------------
-    # 2️⃣ Création des vues
-    # -------------------
+   
+    compte = Compte()
     vue_solde = VueSolde()
     vue_ops = VueOperations()
     vue_alert = VueAlert()
-
-    # -------------------
-    # 3️⃣ Création du contrôleur
-    # -------------------
     controller = CompteController(compte, vue_solde, vue_ops, vue_alert)
 
-    # -------------------
-    # 4️⃣ Test des opérations MVC
-    # -------------------
+    print(" Bienvenue dans l'application bancaire\n")
 
-    print("\n=== Dépôt de 100 ===")
-    controller.deposer(100)      # Solde = 100, historique ["Dépôt +100"]
+    while True:
+       
+        print("\nChoisissez une action :")
+        print("1 - Dépôt")
+        print("2 - Retrait")
+        print("3 - Quitter")
 
-    print("\n=== Retrait de 50 ===")
-    controller.retirer(50)       # Solde = 50, historique ["Dépôt +100", "Retrait -50"]
+        choix = input("Votre choix (1/2/3) : ").strip()
 
-    print("\n=== Retrait de 100 (solde négatif) ===")
-    controller.retirer(100)      # Solde = -50, alerte déclenchée
-
-    print("\n=== Dépôt de 200 ===")
-    controller.deposer(200)      # Solde = 150, alerte disparue
+        if choix == "1":
+            montant = input("Montant à déposer : ").strip()
+            if montant.isdigit():
+                controller.deposer(int(montant))
+            else:
+                print("Veuillez entrer un nombre valide.")
+        elif choix == "2":
+            montant = input("Montant à retirer : ").strip()
+            if montant.isdigit():
+                controller.retirer(int(montant))
+            else:
+                print("Veuillez entrer un nombre valide.")
+        elif choix == "3":
+            print("Merci d'avoir utilisé l'application. Au revoir !")
+            break
+        else:
+            print("Choix invalide, veuillez réessayer.")

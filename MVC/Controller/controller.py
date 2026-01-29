@@ -10,12 +10,12 @@ class CompteController:
         self.mettre_a_jour_vues()
 
     def retirer(self, montant):
-        # Vérification du solde avant de retirer
-        if montant > self.compte.get_solde():   # <-- corrigé ici
+        
+        if montant > self.compte.get_solde():   
             print("Retrait refusé : solde insuffisant")
             return
 
-        # Effectuer le retrait seulement si le solde est suffisant
+       
         self.compte.retirer(montant)
         self.mettre_a_jour_vues()
 

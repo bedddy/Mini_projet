@@ -21,7 +21,6 @@ class CompteBancaire:
         return self.historique
 
 
-# Exemple d’utilisation
 
 if __name__ == "__main__":
     compte1 = CompteBancaire()
